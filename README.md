@@ -1,4 +1,4 @@
-# Sistem Layanan Pengaduan Masyarakat
+# Sistem Layanan Laporan Masyarakat
 
 Sistem pengaduan masyarakat berbasis web yang dibangun dengan Laravel untuk memfasilitasi penyampaian aspirasi dan pengaduan dari masyarakat kepada instansi terkait.
 
