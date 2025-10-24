@@ -81,7 +81,7 @@ php artisan storage:link
 ### 8. Kompilasi Aset
 ```bash
 npm run dev
-
+```
 
 ### 9. Jalankan Aplikasi
 ```bash
