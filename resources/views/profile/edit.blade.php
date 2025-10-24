@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pengaduan Masyarakat</title>
+    <title>Profil - Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

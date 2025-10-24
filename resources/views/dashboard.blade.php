@@ -28,7 +28,7 @@
                         </button>
                         <div id="userMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden z-50">
                             <a href="{{ route('admin.complaints.dashboard') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                                <i class="fas fa-database mr-2"></i>Kelola Pengaduan
+                                <i class="fas fa-database mr-2"></i>Kelola Laporan
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -207,11 +207,11 @@
                             
                             <!-- Data Tables -->
                             <div class="space-y-6">
-                                <!-- Pengaduan Section -->
+                                <!-- Laporan Section -->
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
                                         <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
-                                        Pengaduan
+                                        Laporan
                                     </h3>
                                     <div class="bg-gray-50 rounded-lg p-3">
                                         <div class="flex justify-between items-center py-2 px-2">
@@ -261,7 +261,7 @@
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

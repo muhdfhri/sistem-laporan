@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Pengaduan - Portal Pengaduan Masyarakat</title>
+    <title>Edit Laporan - Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="ml-3">
                             <p class="text-sm text-blue-700">
-                                Status pengaduan saat ini: 
+                                Status laporan saat ini: 
                                 @if ($complaint->status == 'pending')
                                     <span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded font-semibold">Pending</span>
                                 @elseif ($complaint->status == 'processing')
@@ -527,12 +527,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             @if (in_array($complaint->status, ['processing', 'resolved']))
                                 <p class="text-sm text-red-600 mt-1 font-medium">
                                     <i class="fas fa-lock mr-1"></i>
-                                    Pengaduan tidak dapat diedit karena sudah {{ $complaint->status == 'processing' ? 'sedang diproses' : 'selesai ditangani' }}.
+                                    Laporan tidak dapat diedit karena sudah {{ $complaint->status == 'processing' ? 'sedang diproses' : 'selesai ditangani' }}.
                                 </p>
                             @elseif ($complaint->status == 'rejected')
                                 <p class="text-sm text-orange-600 mt-1">
                                     <i class="fas fa-exclamation-circle mr-1"></i>
-                                    Pengaduan telah ditolak. Anda masih bisa mengedit untuk diajukan kembali.
+                                    Laporan telah ditolak. Anda masih bisa mengedit untuk diajukan kembali.
                                 </p>
                             @endif
                         </div>
@@ -590,10 +590,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <!-- Foto -->
                         @if ($complaint->image_path)
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Foto Pengaduan</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Foto Laporan</label>
                                 <div class="flex justify-center">
                                     <img src="{{ asset('storage/' . $complaint->image_path) }}" 
-                                         alt="Foto Pengaduan" 
+                                         alt="Foto Laporan" 
                                          class="max-w-md h-auto rounded-lg shadow-lg border border-gray-300">
                                 </div>
                             </div>
@@ -625,22 +625,38 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div>
                             <label for="title" class="block text-sm font-medium text-gray-700">Judul Laporan Anda</label>
                             <input type="text" id="title" name="title" value="{{ old('title', $complaint->title) }}"
-                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500" required>
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>
+                            @error('title')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Konten -->
                         <div>
-                            <label for="content" class="block text-sm font-medium text-gray-700">Isi Pengaduan</label>
+                            <label for="content" class="block text-sm font-medium text-gray-700">Isi Laporan Anda</label>
                             <textarea id="content" name="content" rows="5"
-                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500" required>{{ old('content', $complaint->content) }}</textarea>
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>{{ old('content', $complaint->content) }}</textarea>
+                            @error('content')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Kategori -->
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
                             <select id="category" name="category"
-                                    class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500" required>
+                                    class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>
                                 <option value="">-- Pilih Kategori --</option>
+                                @php
+                                    $categories = [
+                                        'infrastruktur' => 'Infrastruktur',
+                                        'lingkungan' => 'Lingkungan',
+                                        'keamanan' => 'Keamanan',
+                                        'kesehatan' => 'Kesehatan',
+                                        'pendidikan' => 'Pendidikan',
+                                        'lainnya' => 'Lainnya'
+                                    ];
+                                @endphp
                                 @foreach($categories as $key => $label)
                                     <option value="{{ $key }}" 
                                         {{ old('category', $complaint->category) == $key ? 'selected' : '' }}>
@@ -648,6 +664,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </option>
                                 @endforeach
                             </select>
+                            @error('category')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Dusun -->
@@ -671,7 +690,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div>
                             <label for="location" class="block text-sm font-medium text-gray-700">Lokasi</label>
                             <input type="text" id="location" name="location" value="{{ old('location', $complaint->location) }}"
-                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500" required>
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>
+                            @error('location')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Foto Saat Ini -->
@@ -680,7 +702,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <label class="block text-sm font-medium text-gray-700">Foto Saat Ini</label>
                                 <div class="mt-2 flex justify-center">
                                     <img src="{{ asset('storage/' . $complaint->image_path) }}" 
-                                         alt="Foto Pengaduan" 
+                                         alt="Foto Laporan" 
                                          class="max-w-md h-auto rounded-lg shadow-lg border border-gray-300">
                                 </div>
                             </div>
@@ -708,7 +730,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 @if ($complaint->image_path)
                                     Kosongkan jika ingin tetap menggunakan foto yang ada. Upload foto baru akan mengganti foto lama. Format: JPG, PNG, JPEG (Maks 2MB)
                                 @else
-                                    Wajib upload foto sebagai bukti pengaduan. Format yang didukung: JPG, PNG, JPEG (Maksimal 2MB)
+                                    Wajib upload foto sebagai bukti laporan. Format yang didukung: JPG, PNG, JPEG (Maksimal 2MB)
                                 @endif
                             </p>
                         </div>
@@ -725,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="flex justify-end">
                             <button type="submit" 
                                     class="px-6 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition inline-flex items-center">
-                                <i class="fas fa-save mr-2"></i>Update Pengaduan
+                                <i class="fas fa-save mr-2"></i>Update Laporan
                             </button>
                         </div>
                     </form>
@@ -734,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- Info Tambahan -->
                 <div class="bg-gray-50 p-4 rounded-lg mt-6">
                     <h4 class="text-sm font-medium text-gray-700 mb-2">
-                        <i class="fas fa-clock mr-2"></i>Informasi Pengaduan
+                        <i class="fas fa-clock mr-2"></i>Informasi Laporan
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
                         <div>
@@ -782,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

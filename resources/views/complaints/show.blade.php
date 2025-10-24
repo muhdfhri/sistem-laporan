@@ -786,7 +786,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

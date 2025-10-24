@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pengaduan Masyarakat</title>
+    <title>Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -30,7 +30,7 @@
                                     <i class="fas fa-user-edit mr-2"></i>Profile
                                 </a>
                                 <a href="/complaints" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-                                    <i class="fas fa-list mr-2"></i>Pengaduan Saya
+                                    <i class="fas fa-list mr-2"></i>Laporan Saya
                                 </a>
                                 <form method="POST" action="/logout" class="block">
                                     @csrf
@@ -48,16 +48,16 @@
         <!-- Welcome Section -->
         <section class="bg-red-500 text-white py-12">
             <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl font-bold mb-4">Portal Pengaduan Masyarakat</h1>
+                <h1 class="text-4xl font-bold mb-4">Portal Laporan Masyarakat</h1>
                 <p class="text-xl mb-2">Suarakan aspirasi Anda untuk lingkungan yang lebih baik.</p>
                 <p class="text-lg mb-8">Kami mendengar, kami tanggap, kami bertindak.</p>
                 
                 <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
                     <a href="/complaints" class="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors inline-flex items-center justify-center">
-                        <i class="fas fa-eye mr-2"></i>Lihat Pengaduan
+                        <i class="fas fa-eye mr-2"></i>Lihat Laporan
                     </a>
                     <a href="/complaints/create" class="bg-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-flex items-center justify-center">
-                        <i class="fas fa-plus mr-2"></i>Buat Pengaduan
+                        <i class="fas fa-plus mr-2"></i>Buat Laporan
                     </a>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
                         <div class="p-4">
                             <div class="text-4xl font-bold text-red-500 mb-2">{{ $stats['total'] }}</div>
-                            <div class="text-gray-600 font-medium">Total Pengaduan</div>
+                            <div class="text-gray-600 font-medium">Total Laporan</div>
                             <div class="text-xs text-gray-500 mt-1">
                                 <i class="fas fa-chart-line mr-1"></i>Semua waktu
                             </div>
@@ -111,7 +111,7 @@
                         <div class="p-6 border-b border-gray-200 flex justify-between items-center">
                             <h2 class="text-2xl font-bold flex items-center text-gray-800">
                                 <i class="fas fa-user-edit text-red-500 mr-3"></i>
-                                Pengaduan Saya
+                                Laporan Saya
                             </h2>
                             <a href="/complaints" class="bg-red-100 text-red-600 px-4 py-2 rounded-lg hover:bg-red-200 transition-colors text-sm">
                                 <i class="fas fa-arrow-right mr-1"></i>Lihat Semua
@@ -190,13 +190,13 @@
                                     </div>
                                 </div>
                             @empty
-                                <p class="text-gray-500">Belum ada pengaduan.</p>
+                                <p class="text-gray-500">Belum ada laporan.</p>
                             @endforelse
 
                             <div class="mt-6 text-center">
                                 <a href="{{ route('complaints.create') }}" class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors inline-flex items-center">
                                     <i class="fas fa-plus mr-2"></i>
-                                    Buat Pengaduan Baru
+                                    Buat Laporan Baru
                                 </a>
                             </div>
                         </div>
@@ -306,7 +306,7 @@
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

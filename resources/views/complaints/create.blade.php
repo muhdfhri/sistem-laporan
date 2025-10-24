@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Pengaduan - Portal Pengaduan Masyarakat</title>
+    <title>Buat Laporan - Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </svg>
                         Buat Laporan Baru
                     </h2>
-                    <p class="text-red-50 text-sm mt-1">Sampaikan pengaduan atau aspirasi Anda dengan lengkap</p>
+                    <p class="text-red-50 text-sm mt-1">Sampaikan laporan atau aspirasi Anda dengan lengkap</p>
                 </div>
 
                 <div class="p-8">
@@ -739,7 +739,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

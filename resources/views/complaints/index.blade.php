@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>
@@ -735,8 +735,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <!-- Delete Confirmation -->
-        <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-            <div class="bg-white rounded-lg p-6 max-w-md w-full modal-enter">
+        <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 p-4">
+            <div class="h-full flex items-center justify-center">
+                <div class="bg-white rounded-lg p-6 max-w-md w-full modal-enter">
                 <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
                     <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
                 </div>

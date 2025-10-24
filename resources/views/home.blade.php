@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard - Pengaduan</title>
+    <title>Dashboard - Laporan</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -376,7 +376,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil Saya</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-list me-2"></i>Pengaduan Saya</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-list me-2"></i>Laporan Saya</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Pengaturan</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
@@ -405,7 +405,7 @@
                 <div class="row">
                     <div class="col-3 quick-stat-item">
                         <div class="quick-stat-number">3</div>
-                        <div class="quick-stat-label">Pengaduan Saya</div>
+                        <div class="quick-stat-label">Laporan Saya</div>
                     </div>
                     <div class="col-3 quick-stat-item">
                         <div class="quick-stat-number">1</div>
@@ -423,16 +423,16 @@
             </div>
             
             <div class="text-center">
-                <h1 class="hero-title">Dashboard Pengaduan</h1>
+                <h1 class="hero-title">Dashboard Laporan</h1>
                 <p class="hero-subtitle">
                     Kelola Laporan Anda dan pantau pengaduan masyarakat lainnya
                 </p>
                 <div class="d-flex justify-content-center gap-3">
                     <button class="btn btn-success-custom" data-bs-toggle="modal" data-bs-target="#createComplaintModal">
-                        <i class="fas fa-plus me-2"></i>Buat Pengaduan Baru
+                        <i class="fas fa-plus me-2"></i>Buat Laporan Baru
                     </button>
                     <a href="#keluhan" class="btn btn-primary-custom">
-                        <i class="fas fa-eye me-2"></i>Lihat Semua Pengaduan
+                        <i class="fas fa-eye me-2"></i>Lihat Semua Laporan
                     </a>
                 </div>
             </div>
@@ -443,7 +443,7 @@
             <div class="row">
                 <div class="col-md-3 stat-card">
                     <div class="stat-number">245</div>
-                    <div class="stat-label">Total Pengaduan</div>
+                    <div class="stat-label">Total Laporan</div>
                 </div>
                 <div class="col-md-3 stat-card">
                     <div class="stat-number">89</div>
@@ -466,7 +466,7 @@
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2 class="text-white mb-0">
-                            <i class="fas fa-comments me-2"></i>Pengaduan
+                            <i class="fas fa-comments me-2"></i>Laporan
                         </h2>
                         <!-- Tabs for filtering -->
                         <ul class="nav nav-pills" id="complaintTabs" role="tablist">

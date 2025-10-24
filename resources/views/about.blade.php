@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="inline-block px-4 py-2 bg-red-50 text-red-600 text-sm font-medium rounded-full mb-4">Mengapa Memilih Kami</span>
                     <h2 class="text-4xl font-bold text-gray-900 mb-4">Layanan Unggulan</h2>
                     <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
-                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">Solusi terpercaya untuk menyalurkan aspirasi dan pengaduan masyarakat dengan efektif</p>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">Solusi terpercaya untuk menyalurkan aspirasi dan laporan masyarakat dengan efektif</p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
@@ -625,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>

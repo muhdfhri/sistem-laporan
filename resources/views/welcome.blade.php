@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pengaduan Masyarakat</title>
+    <title>Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -490,12 +490,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                Platform Resmi Pengaduan Masyarakat
+                Platform Resmi Laporan Masyarakat
             </div>
 
             <!-- Heading -->
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Portal Pengaduan
+                Portal Laporan
                 <span class="block text-red-100">Masyarakat</span>
             </h1>
 
@@ -517,13 +517,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                     Lihat Laporan
                 </a>
-                <a href="{{ route('login') }}" 
-                   class="group inline-flex items-center justify-center px-8 py-4 bg-red-700 hover:bg-red-800 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-white/20 w-full sm:w-auto">
-                    <svg class="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    Sampaikan Laporan
-                </a>
+                @auth
+                    <a href="{{ route('complaints.create') }}" 
+                       class="group inline-flex items-center justify-center px-8 py-4 bg-red-700 hover:bg-red-800 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-white/20 w-full sm:w-auto">
+                        <svg class="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Sampaikan Laporan
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" 
+                       class="group inline-flex items-center justify-center px-8 py-4 bg-red-700 hover:bg-red-800 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-white/20 w-full sm:w-auto">
+                        <svg class="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        Sampaikan Laporan
+                    </a>
+                @endauth
             </div>
 
             <!-- Trust Indicators -->
@@ -668,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p class="text-sm text-gray-500 mt-0.5">Pantau perkembangan laporan dari masyarakat</p>
                         </div>
                     </div>
-                    <a href="#" class="hidden md:inline-flex items-center text-sm font-medium text-red-600 hover:text-red-700 transition-colors">
+                    <a href="{{ route('complaints.public') }}" class="hidden md:inline-flex items-center text-sm font-medium text-red-600 hover:text-red-700 transition-colors">
                         Lihat Semua
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -992,7 +1002,7 @@ document.querySelectorAll('.admin-read-more-btn').forEach(button => {
                         </div>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-sm text-gray-600">Portal Pengaduan Masyarakat</p>
+                        <p class="text-sm text-gray-600">Portal Laporan Masyarakat</p>
                         <p class="text-xs text-gray-500 mt-1">© 2025 All rights reserved</p>
                     </div>
                 </div>
