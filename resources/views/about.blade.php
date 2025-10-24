@@ -239,7 +239,7 @@
             
             <!-- Navigation Links - Desktop Center -->
             <div class="hidden md:flex items-center space-x-2 absolute left-1/2 transform -translate-x-1/2">
-                <a href="{{ url('/welcome') }}" class="nav-link">Beranda</a>    
+                <a href="{{ url('/') }}" class="nav-link">Beranda</a>    
                 <a href="{{ url('/tentang') }}" class="nav-link">Tentang</a>
                 <a href="/complaints/public" class="nav-link">Laporan Publik</a>
             </div>
