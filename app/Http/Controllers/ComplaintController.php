@@ -123,15 +123,11 @@ class ComplaintController extends Controller
             $data['user_id'] = Auth::id();
             $data['status'] = 'pending';
             
-            // Atur field berdasarkan jenis laporan
+            // Atur field suggestion berdasarkan jenis laporan
             if ($data['type'] === 'aspirasi') {
                 $data['suggestion'] = $data['description'];
-                $data['location'] = $data['dusun'] . ', Desa Sunggal Kanan';
             } else {
                 $data['suggestion'] = null;
-                if (empty($data['location'])) {
-                    $data['location'] = $data['dusun'] . ', Desa Sunggal Kanan';
-                }
             }
 
             // Simpan data ke database
@@ -224,7 +220,7 @@ class ComplaintController extends Controller
         
         $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'description' => 'required|string',
             'category' => 'required|in:' . implode(',', array_keys($this->getCategories())),
             'location' => 'required|string|max:255',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -329,7 +325,7 @@ class ComplaintController extends Controller
 
         $recentComplaints = Complaint::with('user')
             ->latest()
-            ->take(5)
+            ->take(10)
             ->get();
 
         $categoryStats = Complaint::selectRaw('category, count(*) as count')
@@ -490,17 +486,17 @@ class ComplaintController extends Controller
     protected function getCategories()
     {
         return [
-            'infrastruktur' => 'Infrastruktur',
-            'kebersihan' => 'Kebersihan',
-            'utilitas' => 'Utilitas',
-            'keamanan_ketertiban' => 'Keamanan dan Ketertiban',
-            'layanan_publik' => 'Layanan Publik',
-            'transportasi_jalan' => 'Transportasi dan Jalan',
-            'kesehatan' => 'Kesehatan',
+            'administrasi_kependudukan' => 'Administrasi Kependudukan',
             'pendidikan' => 'Pendidikan',
-            'lingkungan_hidup' => 'Lingkungan Hidup',
-            'pelayanan_administrasi' => 'Pelayanan Administrasi',
-            'lainnya' => 'Lainnya',
+            'kesehatan' => 'Kesehatan',
+            'perizinan_investasi' => 'Perizinan dan Investasi',
+            'sosial_ketenagakerjaan' => 'Sosial dan Ketenagakerjaan',
+            'infrastruktur_lingkungan' => 'Infrastruktur dan Lingkungan',
+            'keamanan_ketertiban' => 'Keamanan dan Ketertiban',
+            'administrasi_umum' => 'Administrasi Umum',
+            'keuangan_pajak' => 'Keuangan dan Pajak',
+            'transportasi_komunikasi' => 'Transportasi dan Komunikasi',
+            'lainnya' => 'Lainnya'
         ];
     }
 

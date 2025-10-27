@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <!-- Konten -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Isi Laporan Anda</label>
-                            <div class="mt-1 p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 whitespace-pre-wrap">{{ $complaint->content }}</div>
+                            <div class="mt-1 p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 whitespace-pre-wrap">{{ $complaint->description }}</div>
                         </div>
 
                         <!-- Kategori -->
@@ -633,10 +633,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!-- Konten -->
                         <div>
-                            <label for="content" class="block text-sm font-medium text-gray-700">Isi Laporan Anda</label>
-                            <textarea id="content" name="content" rows="5"
-                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>{{ old('content', $complaint->content) }}</textarea>
-                            @error('content')
+                            <label for="description" class="block text-sm font-medium text-gray-700">Isi Laporan Anda</label>
+                            <textarea id="description" name="description" rows="5"
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-red-500 focus:border-red-500 p-2" required>{{ old('description', $complaint->description) }}</textarea>
+                            @error('description')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -649,11 +649,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <option value="">-- Pilih Kategori --</option>
                                 @php
                                     $categories = [
-                                        'infrastruktur' => 'Infrastruktur',
-                                        'lingkungan' => 'Lingkungan',
-                                        'keamanan' => 'Keamanan',
-                                        'kesehatan' => 'Kesehatan',
+                                        'administrasi_kependudukan' => 'Administrasi Kependudukan',
                                         'pendidikan' => 'Pendidikan',
+                                        'kesehatan' => 'Kesehatan',
+                                        'perizinan_investasi' => 'Perizinan dan Investasi',
+                                        'sosial_ketenagakerjaan' => 'Sosial dan Ketenagakerjaan',
+                                        'infrastruktur_lingkungan' => 'Infrastruktur dan Lingkungan',
+                                        'keamanan_ketertiban' => 'Keamanan dan Ketertiban',
+                                        'administrasi_umum' => 'Administrasi Umum',
+                                        'keuangan_pajak' => 'Keuangan dan Pajak',
+                                        'transportasi_komunikasi' => 'Transportasi dan Komunikasi',
                                         'lainnya' => 'Lainnya'
                                     ];
                                 @endphp

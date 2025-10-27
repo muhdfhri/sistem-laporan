@@ -699,11 +699,15 @@
                                 <label class="form-label">Kategori</label>
                                 <select class="form-select" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option>Infrastruktur</option>
-                                    <option>Kebersihan</option>
-                                    <option>Utilitas</option>
-                                    <option>Keamanan</option>
-                                    <option>Layanan Publik</option>
+                                    <option>Administrasi Kependudukan</option>
+                                    <option>Pendidikan</option>
+                                    <option>Kesehatan</option>
+                                    <option>Perizinan dan Investasi</option>
+                                    <option>Keamanan dan Ketertiban</option>
+                                    <option>Administrasi Umum</option>
+                                    <option>Keuangan dan Pajak'</option>
+                                    <option>Transportasi dan Komunikasi</option>
+                                    <option>Lainnya</option>
                                 </select>
                             </div>
                         </div>
