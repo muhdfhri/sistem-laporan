@@ -108,39 +108,60 @@ class ComplaintController extends Controller
     public function store(StoreComplaintRequest $request)
     {
         try {
+            // Validasi data
             $data = $request->validated();
             
-            // Handle image upload
-            if ($request->hasFile('image')) {
-                $data['image_path'] = $request->file('image')->store('complaints', 'public');
+            // Proses upload gambar
+            if ($request->hasFile('image_path')) {
+                $file = $request->file('image_path');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('complaints', $fileName, 'public');
+                $data['image_path'] = $path;
             }
 
-            // Set default values
+            // Set nilai default
             $data['user_id'] = Auth::id();
             $data['status'] = 'pending';
             
-            // Ensure proper null values for type-specific fields
+            // Atur field berdasarkan jenis laporan
             if ($data['type'] === 'aspirasi') {
-                $data['location'] = null;
-                if (!isset($data['suggestion'])) {
-                    $data['suggestion'] = '';
-                }
+                $data['suggestion'] = $data['description'];
+                $data['location'] = $data['dusun'] . ', Desa Sunggal Kanan';
             } else {
                 $data['suggestion'] = null;
-                if (!isset($data['location'])) {
-                    $data['location'] = '';
+                if (empty($data['location'])) {
+                    $data['location'] = $data['dusun'] . ', Desa Sunggal Kanan';
                 }
             }
 
-            $complaint = Complaint::create($data);
+            // Simpan data ke database
+            $complaint = new Complaint($data);
+            $saved = $complaint->save();
 
-            return redirect()->route('complaints.index')
-                ->with('success', $data['type'] === 'pengaduan' ? 'Pengaduan berhasil dikirim.' : 'Aspirasi berhasil disampaikan.');
+            if (!$saved) {
+                throw new \Exception('Gagal menyimpan data ke database');
+            }
+
+            return redirect()
+                ->route('complaints.index')
+                ->with('success', 
+                    $data['type'] === 'pengaduan' 
+                        ? 'Pengaduan Anda berhasil dikirim. Terima kasih atas partisipasinya.' 
+                        : 'Aspirasi Anda berhasil disampaikan. Terima kasih atas masukan Anda.'
+                );
                 
         } catch (\Exception $e) {
+            \Log::error('Gagal menyimpan laporan: ' . $e->getMessage());
+            \Log::error($e->getTraceAsString());
+            
+            // Hapus file yang sudah diupload jika ada error
+            if (isset($path) && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
+            
             return back()
                 ->withInput()
-                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+                ->with('error', 'Maaf, terjadi kesalahan saat mengirim laporan. Silakan coba beberapa saat lagi.');
         }
     }
     

@@ -6,6 +6,8 @@
     <title>Buat Laporan - Portal Laporan Masyarakat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Alpine JS -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <style>
 body, html {
@@ -517,9 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     @endif
 
                     {{-- Form --}}
-                    <form action="{{ route('complaints.store') }}" method="POST" enctype="multipart/form-data" class="space-y-7" x-data="{ type: '' }" x-init="$watch('type', value => {
-                        if (value) document.getElementById('type-error').classList.add('hidden');
-                    })">
+                    <form action="{{ route('complaints.store') }}" method="POST" enctype="multipart/form-data" class="space-y-7" x-data="{ type: '' }">
                         @csrf
 
                         <!-- Jenis Laporan -->
@@ -711,16 +711,52 @@ document.addEventListener('DOMContentLoaded', function() {
         </main>
 
         <script>
-        // Preview image
-        document.getElementById('image_path').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImg').src = e.target.result;
-                    document.getElementById('imagePreview').classList.remove('hidden');
+        // Initialize form handling after Alpine.js is loaded
+        document.addEventListener('alpine:init', () => {
+            // This will run after Alpine is initialized
+            const form = document.querySelector('form');
+            
+            // Handle form submission
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const typeInput = document.querySelector('input[name="type"]:checked');
+                    const typeError = document.getElementById('type-error');
+                    
+                    if (!typeInput && typeError) {
+                        e.preventDefault();
+                        typeError.classList.remove('hidden');
+                        typeError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+                
+                // Initialize type watcher
+                if (form.__x && form.__x.$data) {
+                    form.__x.$watch('type', value => {
+                        const typeError = document.getElementById('type-error');
+                        if (value && typeError) {
+                            typeError.classList.add('hidden');
+                        }
+                    });
                 }
-                reader.readAsDataURL(file);
+            }
+            
+            // Initialize image preview
+            const imageInput = document.getElementById('image_path');
+            const previewImg = document.getElementById('previewImg');
+            const imagePreview = document.getElementById('imagePreview');
+            
+            if (imageInput && previewImg && imagePreview) {
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            previewImg.src = e.target.result;
+                            imagePreview.classList.remove('hidden');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
             }
         });
         </script>
@@ -747,31 +783,31 @@ document.addEventListener('DOMContentLoaded', function() {
         </footer>
     </div>
 
-    <!-- Alpine JS -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // User menu toggle
             const button = document.getElementById("userMenuButton");
             const menu = document.getElementById("userMenu");
 
-            button.addEventListener("click", function () {
-                menu.classList.toggle("hidden");
-            });
+            if (button && menu) {
+                button.addEventListener("click", function () {
+                    menu.classList.toggle("hidden");
+                });
 
-            // Close menu when clicking outside
-            document.addEventListener("click", function (event) {
-                if (!button.contains(event.target) && !menu.contains(event.target)) {
-                    menu.classList.add("hidden");
-                }
-            });
+                // Close menu when clicking outside
+                document.addEventListener("click", function (event) {
+                    if (!button.contains(event.target) && !menu.contains(event.target)) {
+                        menu.classList.add("hidden");
+                    }
+                });
+            }
 
             // Preview image
             const imageInput = document.getElementById("image_path");
             const imagePreview = document.getElementById("imagePreview");
             const previewImage = document.getElementById("previewImg");
 
-            if (imageInput) {
+            if (imageInput && previewImage && imagePreview) {
                 imageInput.addEventListener("change", function () {
                     const file = this.files[0];
                     if (file) {

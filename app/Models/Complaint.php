@@ -13,7 +13,6 @@ class Complaint extends Model
         'title',
         'description',
         'type',
-        'suggestion',
         'category',
         'dusun',
         'location',
